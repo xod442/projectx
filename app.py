@@ -65,7 +65,12 @@ def add_deal():
                 name = c['name']
                 my_companies.append(name)
             message = "please select a valid company to save action"
-            return render_template('add_deal.html', message=message, my_companies=my_companies)
+            return render_template('add_deal.html', message=message,
+                                                    partner=entry['partner'],
+                                                    deal=entry['deal'],
+                                                    thoughts=entry['thoughts'],
+                                                    notes=entry['notes'],
+                                                    my_companies=my_companies)
 
         res = db.deals.insert_one(entry)
         message = 'Deal information written to database'
@@ -653,8 +658,8 @@ def add_action():
             for c in comp:
                 name = c['name']
                 my_companies.append(name)
-            message = "please select a valid company to save action"
-            return render_template('add_action.html', message=message, my_companies=my_companies)
+            message = "please select a valid company"
+            return render_template('add_action.html', message=message, action=entry['action'], my_companies=my_companies)
 
         res = db.actions.insert_one(entry)
         message = 'Action Item information written to database'
