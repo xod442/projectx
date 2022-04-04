@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% include "navbar.html" %}
+
+{% block content %}
+
+        <div class="container">
+
+            <div class="row mt-50">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="text-center heading-separator" style="color:white">Select a Meeting</h2>
+                    <form method="POST" action="{{ url_for('.view_meeting')}}">
+                      <div class="col-sm-4">
+                          <select class="selectpicker" name="title">
+                              <option selected value="unselected">unselected</option>
+                              {% for meet in my_meetings %}
+                                  <option value="{{ meet }}">{{ meet }}</option>
+                              {% endfor %}
+                          </select>
+                          <div style="color:red">
+                            {{ message }}
+                          </div>
+                      </div>
+                      <br>
+                        <div class="text-center mt-20">
+                            <button class="btn btn-green">Select Meeting</button>
+                        </div>
+                    </form>
+                </div>
+            </div><
+
+
+
+
+  {% endblock %}

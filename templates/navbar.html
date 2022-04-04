@@ -1,0 +1,86 @@
+
+{% block content %}
+
+<nav id="primary-navigation" class="site-navigation">
+    <div class="container">
+
+        <div class="navbar-header">
+
+            <a class="site-title"><span>Andromeda.</span>da5id</a>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+
+
+                <li><a href="{{ url_for('home_again') }}">Home</a></li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Deals<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                      <li><a href="{{ url_for('add_deal') }}">Add Deal</a></li>
+                      <li><a href="{{ url_for('list_deals') }}">List Deals</a></li>
+                      <li><a href="{{ url_for('edit_deal') }}">Edit Deal</a></li>
+                      <li><a href="{{ url_for('delete_deal') }}">Delete Deal</a></li>
+                      <li><a href="{{ url_for('test') }}">Test</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Notes<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                      <li><a href="{{ url_for('add_log') }}">Add Log</a></li>
+                      <li><a href="{{ url_for('list_log') }}">List Log</a></li>
+                      <li><a href="{{ url_for('edit_log') }}">Edit Log</a></li>
+                      <li><a href="{{ url_for('delete_log') }}">Delete Log</a></li>
+                      <li><a href="{{ url_for('add_meeting') }}">Add Meeting</a></li>
+                      <li><a href="{{ url_for('view_meeting') }}">List Meeting</a></li>
+                      <li><a href="{{ url_for('edit_meeting') }}">Edit Meeting</a></li>
+                      <li><a href="{{ url_for('delete_meeting') }}">Delete Meeting</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Actions<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                      <li><a href="{{ url_for('add_action') }}">Add Action</a></li>
+                      <li><a href="{{ url_for('list_action') }}">List Action</a></li>
+                      <li><a href="{{ url_for('edit_action') }}">Edit Action</a></li>
+                      <li><a href="{{ url_for('delete_action') }}">Delete Action</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Company<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                      <li><a href="{{ url_for('add_company') }}">Add Company</a></li>
+                      <li><a href="{{ url_for('list_company') }}">List Company</a></li>
+                      <li><a href="{{ url_for('delete_company') }}">Delete Company</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Contacts<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                      <li><a href="{{ url_for('add_customer') }}">Add Contact</a></li>
+                      <li><a href="{{ url_for('list_customer') }}">List Contact</a></li>
+                      <li><a href="{{ url_for('edit_customer') }}">Edit Contact</a></li>
+                      <li><a href="{{ url_for('delete_customer') }}">Delete Contact</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Travel<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                      <li><a href="{{ url_for('add_travel') }}">Add Travel</a></li>
+                      <li><a href="{{ url_for('view_travel') }}">List Travel</a></li>
+                      <li><a href="{{ url_for('edit_travel') }}">Edit Travel</a></li>
+                      <li><a href="{{ url_for('delete_travel') }}">Delete Travel</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Utility<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                      <li><a href="{{ url_for('magic') }}">Magic 8 Ball</a></li>
+                      <li><a href="{{ url_for('load_warn') }}">Load DB</a></li>
+                      <li><a href="{{ url_for('dump') }}">Dump DB</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+
+            </ul>
+
+        </div>
+
+    </div>
+</nav><!-- /.site-navigation -->
+{% endblock %}

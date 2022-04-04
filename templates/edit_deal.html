@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% include "navbar.html" %}
+
+{% block content %}
+
+        <div class="container">
+
+            <div class="row mt-50">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="text-center heading-separator" style="color:white">Edit a Deal</h2>
+                    <form method="POST" action="{{ url_for('.edit_deal')}}">
+                      <div class="col-sm-12">
+                          <select class="selectpicker" name="deal">
+                              <option>unselected</option>
+                              {% for deal in my_deals %}
+                                  <option>{{ deal }}</option>
+                              {% endfor %}
+                          </select>
+                          <div style="color:red">
+                            {{ message }}
+                          </div>
+                      </div>
+                      <br>
+                        <div class="text-center mt-20">
+                            <button class="btn btn-green">Edit Deal</button>
+                        </div>
+                    </form>
+                </div>
+            </div><
+
+
+
+
+  {% endblock %}

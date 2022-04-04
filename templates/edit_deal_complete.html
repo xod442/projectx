@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% include "navbar.html" %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row mt-50">
+        <div class="col-md-8 col-md-offset-2">
+            <h2 class="text-center heading-separator" style="color:black">Edit Deal</h2>
+            <form method="POST" action="{{ url_for('.edit_deal_complete')}}">
+                <div class="row">
+                  <div class="col-sm-12">
+                      <div class="form-group">
+                        <label for="partner" style="color:white">Partner:</label>
+                        <input type="text" readonly value="{{ info[0] }}" class="form-control" id="partner" name="partner">
+                      </div>
+                  </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                          <label for="deal" style="color:white">Deal:</label>
+                          <input type="text" value="{{ info[1] }}"class="form-control" id="deal" name="deal">
+                        </div>
+                    </div>
+
+                    <label for="status" style="color:white">Status:</label>
+                    <select class="selectpicker" name="status">
+                      <option value="pursuit" selected>{{ info[2] }}</option>
+                      <option value="won">Won</option>
+                      <option value="closed">Closed</option>
+                      <option value="closed">Lost</option>
+                    </select>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                          <label for="thoughts" style="color:white">Thoughts:</label>
+                          <input type="text" value="{{ info[3] }}" class="form-control" id="thoughts" name="thoughts">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                          <label for="notes" style="color:white">Notes:</label>
+                          <input type="text" value="{{ info[4] }}" class="form-control" id="notes" name="notes">
+                        </div>
+                    </div>
+                    <input type="text" hidden value="{{ info[5] }}" id="number" name="number">
+                </div>
+                <div class="text-center mt-20">
+                    <button class="btn btn-green">Edit Deal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+  {% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% include "navbar.html" %}
+
+{% block content %}
+
+        <div class="container">
+            <div class="row mt-50">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="text-center heading-separator" style="color:black">Add Deal</h2>
+                    <form method="POST" action="{{ url_for('.add_deal')}}">
+                        <div class="row">
+                          <select class="selectpicker" name="company">
+                              <option>unselected</option>
+                              {% for comp in my_companies %}
+                                  <option>{{ comp }}</option>
+                              {% endfor %}
+                          </select>
+                          <div>
+                            <p style="color:red">  {{ message }}  </p>
+                          </div>
+                          <div class="col-sm-12">
+                              <div class="form-group">
+                                <label for="partner" style="color:white">Partner:</label>
+                                <input type="text" class="form-control" id="partner" name="partner">
+                              </div>
+                          </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                  <label for="deal" style="color:white">Deal:</label>
+                                  <input type="text" class="form-control" id="deal" name="deal">
+                                </div>
+                            </div>
+
+                            <label for="status" style="color:white">Status:</label>
+                            <select class="selectpicker" name="status">
+                              <option value="pursuit" selected>pursuit</option>
+                              <option value="won">won</option>
+                              <option value="closed">closed</option>
+                            </select>
+
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                  <label for="thoughts" style="color:white">Thoughts:</label>
+                                  <input type="text" class="form-control" id="thoughts" name="thoughts">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                  <label for="notes" style="color:white">Notes:</label>
+                                  <input type="text" class="form-control" id="notes" name="notes">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="text-center mt-20">
+                            <button class="btn btn-green">Add Deal</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+  {% endblock %}

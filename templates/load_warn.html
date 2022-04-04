@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+            <div class="container">
+
+
+                <div class="row mt-50">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2 class="text-center heading-separator" style="color:black">Da5id</h2>
+                        <form method="POST" action="{{ url_for('.load')}}">
+                            <div class="row" style="color:white">
+                                <h3> You are about to load the database </h3>
+                                <p style="color:red">Proceed with caution!!</p>
+                            </div>
+                            <div>
+
+                            <div class="text-center mt-20">
+                                <button class="btn btn-red">Load DB</button>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- /.form -->
+
+{% endblock %}

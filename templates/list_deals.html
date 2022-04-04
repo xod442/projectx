@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% include "navbar.html" %}
+
+{% include "news.html" %}
+
+{% block content %}
+<div class="col-lg-12">
+        <!-- seo fact area start -->
+        <div class="card">
+              <div class="card-body"
+                <h1>List of Deals</h1>
+                <div class="data-tables datatable-dark">
+                      <table id="example" class="styled-table">
+                            <thead class="text-capitalize">
+                                <tr>
+                                    <th>Number</th>
+                                    <th>Company</th>
+                                    <th>Partner</th>
+                                    <th>Deal</th>
+                                    <th>Status</th>
+                                    <th>Thoughts</th>
+                                    <th>Notes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for deal in my_deals %}
+                                    <tr>
+                                        <td>{{deal[0]}}</td>
+                                        <td>{{deal[1]}}</td>
+                                        <td>{{deal[2]}}</td>
+                                        <td>{{deal[3]}}</td>
+                                        <td>{{deal[4]}}</td>
+                                        <td>{{deal[5]}}</td>
+                                        <td>{{deal[6]}}</td>
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                        </table>
+              </div>
+        </div>
+</div>
+
+
+
+  {% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% include "navbar.html" %}
+
+{% block content %}
+
+        <div class="container">
+
+            <div class="row mt-50">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="text-center heading-separator" style="color:white">Delete Company</h2>
+                    <form method="POST" action="{{ url_for('.delete_company')}}">
+                      <div class="col-sm-4">
+                          <select class="selectpicker" name="company">
+                              <option>unselected</option>
+                              {% for comp in my_companies %}
+                                  <option>{{ comp }}</option>
+                              {% endfor %}
+                          </select>
+                          <div style="color:red">
+                            {{ message }}
+                          </div>
+                      </div>
+
+                        <div class="text-center mt-20">
+                            <button class="btn btn-green">Delete Company</button>
+                        </div>
+                    </form>
+                </div>
+            </div><
+
+
+
+
+  {% endblock %}
