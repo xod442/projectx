@@ -48,6 +48,8 @@ def add_deal():
         entry = {
             "deal": request.form['deal'].replace("'", ""),
             "company": request.form['company'].replace("'", ""),
+            "customer": request.form['customer'].replace("'", ""),
+            "ope": request.form['ope'].replace("'", ""),
             "status": request.form['status'].replace("'", ""),
             "thoughts": request.form['thoughts'].replace("'", ""),
             "partner": request.form['partner'].replace("'", ""),
@@ -67,6 +69,8 @@ def add_deal():
             message = "please select a valid company to save action"
             return render_template('add_deal.html', message=message,
                                                     partner=entry['partner'],
+                                                    customer=entry['customer'],
+                                                    ope=entry['ope'],
                                                     deal=entry['deal'],
                                                     thoughts=entry['thoughts'],
                                                     notes=entry['notes'],
@@ -95,11 +99,13 @@ def list_deals():
         number = d['number']
         company = d['company']
         partner = d['partner']
+        customer = d['customer']
+        ope = d['ope']
         status = d['status']
         deal = d['deal']
         thoughts = d['thoughts']
         notes = d['notes']
-        info = [number, company, partner, deal, status, thoughts, notes]
+        info = [number, company, customer, partner, ope, deal, status, thoughts, notes]
         my_deals.append(info)
     return render_template('list_deals.html', my_deals=my_deals)
 
@@ -127,7 +133,7 @@ def edit_deal():
         number = int(number)
         deals = db.deals.find({"number":number})
         deal = loads(dumps(deals))
-        info = [ deal[0]['partner'], deal[0]['deal'], deal[0]['status'], deal[0]['thoughts'], deal[0]['notes'], deal[0]['number'], deal[0]['notes'], deal[0]['number'] ]
+        info = [deal[0]['partner'], deal[0]['deal'], deal[0]['status'], deal[0]['thoughts'], deal[0]['notes'], deal[0]['ope'], deal[0]['customer'],deal[0]['number']]
         return render_template('edit_deal_complete.html', info=info)
 
 
@@ -150,10 +156,13 @@ def edit_deal_complete():
     number = request.form['number'].replace("'", "")
     status = request.form['status'].replace("'", "")
     thoughts = request.form['thoughts'].replace("'", "")
+    partner = request.form['partner'].replace("'", "")
     notes = request.form['notes'].replace("'", "")
+    customer = request.form['customer'].replace("'", "")
+    ope = request.form['ope'].replace("'", "")
     number = int(number)
     myquery = { "number": number }
-    newvalues = { "$set": { "deal": deal, "status": status, "thoughts": thoughts, "notes": notes }}
+    newvalues = { "$set": { "deal": deal, "status": status, "thoughts": thoughts, "notes": notes, "partner": partner, "customer": customer, "ope": ope }}
     db.deals.update_one(myquery, newvalues)
     message = 'Deal information been updated in the database'
     return redirect(url_for('.home_again', message=message))
