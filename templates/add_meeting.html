@@ -7,7 +7,7 @@
 
             <div class="row mt-50">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="text-center heading-separator" style="color:black">Add Meeting Notes</h2>
+                    <h2 class="text-center heading-separator" style="color:white">Add Meeting Notes</h2>
                     <form method="POST" action="{{ url_for('.add_meeting')}}">
                       <div class="col-sm-4">
                           <select class="selectpicker" name="company">
@@ -23,11 +23,12 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                  <label for="action" style="color:black">Enter a meeting title:</label>
+                                  <label for="action" style="color:white">Enter a meeting title:</label>
                                   <input type="text" class="form-control" id="title" name="title">
                                 </div>
                                 <div>
-                                  <label for="notes">Meeting Notes:</label><textarea id="notes" name="notes" rows="10" cols="100">{{ notes }}</textarea>
+                                  <label for="notes">Meeting Notes:</label>
+                                  <textarea id="notes" name="notes" rows="10" cols="100">{{ notes }}</textarea>
                                 </div>
                             </div>
                         </div>

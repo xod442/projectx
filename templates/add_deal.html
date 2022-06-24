@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row mt-50">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="text-center heading-separator" style="color:black">Add Deal</h2>
+                    <h2 class="text-center heading-separator" style="color:white">Add Deal</h2>
                     <form method="POST" action="{{ url_for('.add_deal')}}">
                         <div class="row">
                           <select class="selectpicker" name="company">
@@ -16,14 +16,34 @@
                                   <option>{{ comp }}</option>
                               {% endfor %}
                           </select>
+
+                          <label for="status" style="color:white">Status:</label>
+                          <select class="selectpicker" name="status">
+                            <option value="pursuit" selected>pursuit</option>
+                            <option value="won">won</option>
+                            <option value="closed">closed</option>
+                          </select>
+
                           <div>
                             <p style="color:red">  {{ message }}  </p>
                           </div>
-                          <div class="col-sm-12">
+                          <div class="col-sm-4">
                               <div class="form-group">
                                 <label for="partner" style="color:white">Partner:</label>
                                 <input type="text" value="{{ partner }}" class="form-control" id="partner" name="partner">
                               </div>
+                          </div>
+                          <div class="col-sm-4">
+                              <div class="form-group">
+                                <label for="customer" style="color:white">Customer Name:</label>
+                                <input type="text" value="{{ customer }}" class="form-control" id="customer" name="customer">
+                                </div>
+                          </div>
+                          <div class="col-sm-4">
+                              <div class="form-group">
+                                <label for="ope" style="color:white">OPE#:</label>
+                                <input type="text" value="{{ ope }}" class="form-control" id="ope" name="ope">
+                                </div>
                           </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
@@ -32,12 +52,7 @@
                                 </div>
                             </div>
 
-                            <label for="status" style="color:white">Status:</label>
-                            <select class="selectpicker" name="status">
-                              <option value="pursuit" selected>pursuit</option>
-                              <option value="won">won</option>
-                              <option value="closed">closed</option>
-                            </select>
+
 
                             <div class="col-sm-12">
                                 <div class="form-group">
@@ -46,11 +61,15 @@
                                 </div>
                             </div>
                             <div class="col-sm-12">
-                                <div class="form-group">
-                                  <label for="notes" style="color:white">Notes:</label>
-                                  <input type="text" value="{{ notes }}"class="form-control" id="notes" name="notes">
-                                </div>
+                              <div>
+                                <label for="notes" style="color:white">Notes:</label>
+                                <textarea id="notes" name="notes" rows="10" cols="100">{{ notes }}</textarea>
+                              </div>
                             </div>
+
+
+
+
 
                         </div>
                         <div class="text-center mt-20">

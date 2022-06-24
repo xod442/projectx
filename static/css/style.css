@@ -652,7 +652,7 @@ html, body {
 .site-title {
     font-size: 18px;
     line-height: 26px;
-    color: #26272d;
+    color: #ffffff;
 }
 
 .site-title:hover {
@@ -682,13 +682,13 @@ html, body {
     padding: 0;
     font-size: 16px;
     position: relative;
-    color: #26272d;
+    color: #ffffff;
     line-height: 26px;
 }
 
 .site-header-white .navbar-nav > li > a,
 .site-header-white .site-title {
-    color: #000;
+    color: #fff;
 }
 
 .navbar-nav > li > a i {
@@ -1591,7 +1591,7 @@ a.linkedin-bg:hover {
   width: 100%
 }
 body {
- background-image: url("https://www.wallpaperbetter.com/wallpaper/742/142/339/sea-stacks-at-second-beach-oregon-1080P-wallpaper-middle-size.jpg");
+ background-image: url("https://p7q8s5f8.rocketcdn.me/wp-content/uploads/2019/07/hpe.jpg");
  background-color: #b6d6b9;
  background-repeat: no-repeat;
 background-size: cover;
@@ -1599,12 +1599,9 @@ background-size: cover;
 table, th, td {
   border: 1px solid;
   color:#ffffff;
-  align="center";
 }
 .styled-table {
     background: gray;
-    margin-left: auto;
-    margin-right: auto;
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
@@ -1616,7 +1613,7 @@ table, th, td {
 .styled-table thead tr {
     background-color: #309ccf;
     color: #ffffff;
-    text-align: center;
+    text-align: left;
 }
 .styled-table th,
 .styled-table td {
