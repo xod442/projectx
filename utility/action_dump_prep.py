@@ -5,7 +5,7 @@ import json
 def prep_actions(db):
     header = '@-actions'
     cr = '\n'
-    f = open("da5id_data.txt", "w")
+    f = open("/da5id_data.txt", "w")
     f.write(header)
     f.write(cr)
     # Get actions

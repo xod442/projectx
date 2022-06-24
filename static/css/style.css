@@ -1599,9 +1599,12 @@ background-size: cover;
 table, th, td {
   border: 1px solid;
   color:#ffffff;
+  align="center";
 }
 .styled-table {
     background: gray;
+    margin-left: auto;
+    margin-right: auto;
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
@@ -1613,7 +1616,7 @@ table, th, td {
 .styled-table thead tr {
     background-color: #309ccf;
     color: #ffffff;
-    text-align: left;
+    text-align: center;
 }
 .styled-table th,
 .styled-table td {

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% include "navbar-home.html" %}
+
 {% block content %}
 
             <div class="container">
@@ -20,9 +22,7 @@
                             <div>
                               <p style="color:red"> {{ error }} </p>
                             </div>
-                            <div class="text-center mt-20">
-                                <button class="btn btn-green">Home</button>
-                            </div>
+                        
                         </form>
                     </div>
                 </div><!-- /.form -->

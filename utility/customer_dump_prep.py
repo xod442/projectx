@@ -6,7 +6,7 @@ def prep_customer(db):
     header = '@-customer'
     cr = '\n'
     # Set filehandle
-    f = open("da5id_data.txt", "a")
+    f = open("/da5id_data.txt", "a")
     f.write(header)
     f.write(cr)
     # Get actions

@@ -13,8 +13,15 @@ varz = []
 data = {}
 dump = []
 imc_test_url = 'http://'+imc_host+':8080'
-dbclient = MongoClient('mongodb://localhost:27017/')
-## Configuring a connection to the VSD API
+config = {
+    "username": "admin",
+    "password": "siesta3",
+    "server": "mongo",
+}
+
+connector = "mongodb://{}:{}@{}".format(config["username"], config["password"], config["server"])
+client = MongoClient(connector)
+
 
 
 auth = IMCAuth("http://", imc_host, "8080", imc_user, imc_passwd)
@@ -27,7 +34,7 @@ print('--------------get_alarms------<<<<<<<<<>>>>>>>>>>>----------------------'
 print(len(alarms))
 print(type(alarms))
 
-mydb = dbclient["arubaimc"]
+mydb = client["test"]
 known = mydb["imc_alarms"]
 print(known)
 

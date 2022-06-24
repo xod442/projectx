@@ -6,7 +6,7 @@ def prep_deals(db):
     header = '@-deals'
     cr = '\n'
     # Set filehandle
-    f = open("da5id_data.txt", "a")
+    f = open("/da5id_data.txt", "a")
     f.write(header)
     f.write(cr)
     # Get deals

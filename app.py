@@ -74,7 +74,7 @@ def add_deal():
 
         res = db.deals.insert_one(entry)
         message = 'Deal information written to database'
-        return render_template('message.html', message=message)
+        return redirect(url_for('.home_again', message=message))
 
     # Get a list of Companies
     my_companies = []
@@ -156,7 +156,7 @@ def edit_deal_complete():
     newvalues = { "$set": { "deal": deal, "status": status, "thoughts": thoughts, "notes": notes }}
     db.deals.update_one(myquery, newvalues)
     message = 'Deal information been updated in the database'
-    return render_template('message.html', message=message)
+    return redirect(url_for('.home_again', message=message))
 
 
 @app.route("/delete_deal", methods=('GET', 'POST'))
@@ -172,7 +172,7 @@ def delete_deal():
         number = int(number)
         action = db.deals.delete_one({"number":number})
         message = "The Deal has been deleted"
-        return render_template('message.html', message=message)
+        return redirect(url_for('.home_again', message=message))
 
     # Get a list of deals
     my_deals = []
@@ -279,14 +279,16 @@ def home():
             my_actions.append(info)
 
         # return stats
-        return render_template('home.html', stats=stats, my_actions=my_actions)
+        message = 'System Operation Normal'
+        return render_template('home.html', stats=stats, my_actions=my_actions, message=message)
     else:
         error = 'Invalid Username or passsword'
         return render_template('login.html', error=error)
 
 @app.route("/home_again", methods=('GET', 'POST'))
 def home_again():
-    # Check user credentials
+    # Check user credentials.
+    message = request.args['message']
     my_actions = []
     my_logs = []
     deals = db.deals.count_documents({})
@@ -309,7 +311,7 @@ def home_again():
         my_actions.append(info)
 
     # return stats
-    return render_template('home.html', stats=stats, my_actions=my_actions)
+    return render_template('home.html', stats=stats, my_actions=my_actions, message=message)
 '''
 #-------------------------------------------------------------------------------
 Travel Section
@@ -345,7 +347,7 @@ def add_travel():
         }
         res = db.travel.insert_one(entry)
         message = 'Travel data written to database'
-        return render_template('message.html', message=message)
+        return redirect(url_for('.home_again', message=message))
 
     # Send form
     return render_template('add_travel.html')
@@ -457,7 +459,7 @@ def edit_travel_complete():
     newvalues = { "$set": travel }
     db.travel.update_one(myquery, newvalues)
     message = 'Travel information been updated in the database'
-    return render_template('message.html', message=message)
+    return redirect(url_for('.home_again', message=message))
 
 @app.route("/delete_travel", methods=('GET', 'POST'))
 def delete_travel():
@@ -482,7 +484,7 @@ def delete_travel():
         number = int(number)
         meet = db.travel.delete_one({"number":number})
         message = "Travel entry has been deleted"
-        return render_template('message.html', message=message)
+        return redirect(url_for('.home_again', message=message))
 
     # Get a list of logs
     my_travels = []
@@ -524,7 +526,7 @@ def add_log():
         }
         res = db.logs.insert_one(entry)
         message = 'Log data written to database'
-        return render_template('message.html', message=message)
+        return redirect(url_for('.home_again', message=message))
 
     # Check user credentials
     return render_template('add_log.html')
@@ -593,7 +595,7 @@ def edit_log_complete():
         newvalues = { "$set": { "log_info": log_info }}
         db.logs.update_one(myquery, newvalues)
         message = 'Log information been updated in the database'
-        return render_template('message.html', message=message)
+        return redirect(url_for('.home_again', message=message))
 
 @app.route("/delete_log", methods=('GET', 'POST'))
 def delete_log():
@@ -608,7 +610,7 @@ def delete_log():
         number = int(number)
         log = db.logs.delete_one({"number":number})
         message = "Log entry has been deleted"
-        return render_template('message.html', message=message)
+        return redirect(url_for('.home_again', message=message))
 
     # Get a list of logs
     my_logs = []
@@ -663,7 +665,7 @@ def add_action():
 
         res = db.actions.insert_one(entry)
         message = 'Action Item information written to database'
-        return render_template('message.html', message=message)
+        return redirect(url_for('.home_again', message=message))
 
     # Get a list of Companies
     my_companies = []
@@ -741,7 +743,7 @@ def edit_action_complete():
     newvalues = { "$set": { "action": action, "status": status }}
     db.actions.update_one(myquery, newvalues)
     message = 'Action Item information been updated in the database'
-    return render_template('message.html', message=message)
+    return redirect(url_for('.home_again', message=message))
 
 @app.route("/delete_action", methods=('GET', 'POST'))
 def delete_action():
@@ -756,7 +758,7 @@ def delete_action():
         number = int(number)
         action = db.actions.delete_one({"number":number})
         message = "Action item has been deleted"
-        return render_template('message.html', message=message)
+        return redirect(url_for('.home_again', message=message))
 
     # Get a list of actions
     my_actions = []
@@ -798,7 +800,7 @@ def add_company():
 
         res = db.company.insert_one(entry)
         message = 'Company information written to database'
-        return render_template('message.html', message=message)
+        return redirect(url_for('.home_again', message=message))
     # Check user credentials
     return render_template('add_company.html')
 
@@ -831,7 +833,7 @@ def delete_company():
         number = int(number)
         meet = db.company.delete_one({"number":number})
         message = "Company entry has been deleted"
-        return render_template('message.html', message=message)
+        return redirect(url_for('.home_again', message=message))
     # Get a list of logs
     my_companies = []
     comps = db.company.find({})
@@ -885,7 +887,7 @@ def add_customer():
 
         res = db.customer.insert_one(entry)
         message = 'Customer information written to database'
-        return render_template('message.html', message=message)
+        return redirect(url_for('.home_again', message=message))
 
     # Get a list of Companies
     my_companies = []
@@ -966,7 +968,7 @@ def edit_customer_complete():
     newvalues = { "$set": { "name": name, "phone": phone, "email": email }}
     db.customer.update_one(myquery, newvalues)
     message = 'Customer information been updated in the database'
-    return render_template('message.html', message=message)
+    return redirect(url_for('.home_again', message=message))
 
 @app.route("/delete_customer", methods=('GET', 'POST'))
 def delete_customer():
@@ -981,7 +983,7 @@ def delete_customer():
         number = int(number)
         meet = db.customer.delete_one({"number":number})
         message = "Customer entry has been deleted"
-        return render_template('message.html', message=message)
+        return redirect(url_for('.home_again', message=message))
     # Get a list of logs
     my_customer = []
     cust = db.customer.find({})
@@ -1033,7 +1035,7 @@ def load():
     # close the pointer to that file
     f.close()
     message = "database has been loaded"
-    return render_template('message.html', message=message)
+    return redirect(url_for('.home_again', message=message))
 
 @app.route("/dump", methods=('GET', 'POST'))
 def dump():
@@ -1046,7 +1048,7 @@ def dump():
     meetings = prep_meeting(db)
     travel = prep_travel(db)
     message = "database has been written to da5id_data.txt"
-    return render_template('message.html', message=message)
+    return redirect(url_for('.home_again', message=message))
 '''
 #-------------------------------------------------------------------------------
 Logout
@@ -1096,7 +1098,7 @@ def add_meeting():
 
         res = db.meetings.insert_one(entry)
         message = 'Meeting notes have been written to database'
-        return render_template('message.html', message=message)
+        return redirect(url_for('.home_again', message=message))
 
     # Get a list of Companies
     my_companies = []
@@ -1192,7 +1194,7 @@ def edit_meeting_complete():
     newvalues = { "$set": { "notes": notes }}
     db.meetings.update_one(myquery, newvalues)
     message = 'Meeitng notes have been updated in the database'
-    return render_template('message.html', message=message)
+    return redirect(url_for('.home_again', message=message))
 
 @app.route("/delete_meeting", methods=('GET', 'POST'))
 def delete_meeting():
@@ -1207,7 +1209,7 @@ def delete_meeting():
         number = int(number)
         meet = db.meetings.delete_one({"number":number})
         message = "Meeting entry has been deleted"
-        return render_template('message.html', message=message)
+        return redirect(url_for('.home_again', message=message))
     # Get a list of logs
     my_meetings = []
     meets = db.meetings.find({})

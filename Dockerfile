@@ -1,4 +1,6 @@
 FROM python:3.8
+RUN apt-get update -y
+RUN apt-get install -y nano
 
 COPY requirements.txt /opt/
 RUN pip3 install -r /opt/requirements.txt
