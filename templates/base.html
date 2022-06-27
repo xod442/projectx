@@ -49,11 +49,14 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript">
+      $(document).ready(function(){alert('Document Ready!');});
+      </script>
 
 </head>
 <body>
 
-{% block content %}{% endblock %}
+
 
     <!-- Bootstrap core JavaScript
 
@@ -73,8 +76,8 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
 
-  
 
+{% block content %}{% endblock %}
 
 
 </body>
