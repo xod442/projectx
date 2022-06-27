@@ -19,6 +19,7 @@
                                     <th>Partner</th>
                                     <th>OPE</th>
                                     <th>Deal</th>
+                                    <th>Size</th>
                                     <th>Status</th>
                                     <th>Thoughts</th>
                                     <th>Notes</th>
@@ -36,15 +37,19 @@
                                         <td>{{deal[6]}}</td>
                                         <td>{{deal[7]}}</td>
                                         <td>{{deal[8]}}</td>
+                                        <td>{{deal[9]}}</td>
 
                                     </tr>
                                     {% endfor %}
                                 </tbody>
                         </table>
               </div>
+              <p><h3 style="color:white">Deal Pipeline is : {{ total }} </h3></p>
         </div>
 </div>
-
+<script type="text/javascript">
+  $(document).ready(function(){$('#example').DataTable();});
+</script>
 
 
   {% endblock %}
