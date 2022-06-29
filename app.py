@@ -27,7 +27,7 @@ config = {
     "password": "siesta3",
     "server": "mongo",
 }
-
+# mongodump --uri="mongodb://{}:{}@{}".format(config["username"], config["password"], config["server"])
 connector = "mongodb://{}:{}@{}".format(config["username"], config["password"], config["server"])
 client = pymongo.MongoClient(connector)
 db = client["demo"]
@@ -46,15 +46,15 @@ def add_deal():
         my_uuid = uuid.uuid4()
         my_uuid = str(my_uuid)
         entry = {
-            "deal": request.form['deal'].replace("'", ""),
-            "company": request.form['company'].replace("'", ""),
-            "customer": request.form['customer'].replace("'", ""),
-            "ope": request.form['ope'].replace("'", ""),
-            "price": request.form['price'].replace("'", ""),
-            "status": request.form['status'].replace("'", ""),
-            "thoughts": request.form['thoughts'].replace("'", ""),
-            "partner": request.form['partner'].replace("'", ""),
-            "notes": request.form['notes'].replace("'", ""),
+            "deal": request.form['deal'].replace('"', ""),
+            "company": request.form['company'].replace('"', ""),
+            "customer": request.form['customer'].replace('"', ""),
+            "ope": request.form['ope'].replace('"', ""),
+            "price": request.form['price'].replace('"', ""),
+            "status": request.form['status'].replace('"', ""),
+            "thoughts": request.form['thoughts'].replace('"', ""),
+            "partner": request.form['partner'].replace('"', ""),
+            "notes": request.form['notes'].replace('"', ""),
             "number": number,
             "uuid": my_uuid,
             "when": datetime.datetime.now()
@@ -158,15 +158,15 @@ def edit_deal():
 
 @app.route("/edit_deal_complete", methods=('GET', 'POST'))
 def edit_deal_complete():
-    deal = request.form['deal'].replace("'", "")
-    number = request.form['number'].replace("'", "")
-    status = request.form['status'].replace("'", "")
-    thoughts = request.form['thoughts'].replace("'", "")
-    price = request.form['price'].replace("'", "")
-    partner = request.form['partner'].replace("'", "")
-    notes = request.form['notes'].replace("'", "")
-    customer = request.form['customer'].replace("'", "")
-    ope = request.form['ope'].replace("'", "")
+    deal = request.form['deal'].replace('"', "")
+    number = request.form['number'].replace('"', "")
+    status = request.form['status'].replace('"', "")
+    thoughts = request.form['thoughts'].replace('"', "")
+    price = request.form['price'].replace('"', "")
+    partner = request.form['partner'].replace('"', "")
+    notes = request.form['notes'].replace('"', "")
+    customer = request.form['customer'].replace('"', "")
+    ope = request.form['ope'].replace('"', "")
     number = int(number)
     myquery = { "number": number }
     newvalues = { "$set": { "deal": deal, "status": status, "thoughts": thoughts, "notes": notes, "partner": partner, "customer": customer, "ope": ope , "price": price}}
@@ -347,16 +347,16 @@ def add_travel():
         my_uuid = uuid.uuid4()
         my_uuid = str(my_uuid)
         entry = {
-            "travel-desc": request.form['travel-desc'].replace("'", ""),
-            "date-out": request.form['date-out'].replace("'", ""),
-            "takeoff-out": request.form['takeoff-out'].replace("'", ""),
-            "land-out": request.form['land-out'].replace("'", ""),
-            "flight-out": request.form['flight-out'].replace("'", ""),
-            "date-back": request.form['date-back'].replace("'", ""),
-            "takeoff-back": request.form['takeoff-back'].replace("'", ""),
-            "land-back": request.form['land-back'].replace("'", ""),
-            "flight-back": request.form['flight-back'].replace("'", ""),
-            "notes": request.form['notes'].replace("'", ""),
+            "travel-desc": request.form['travel-desc'].replace('"', ""),
+            "date-out": request.form['date-out'].replace('"', ""),
+            "takeoff-out": request.form['takeoff-out'].replace('"', ""),
+            "land-out": request.form['land-out'].replace('"', ""),
+            "flight-out": request.form['flight-out'].replace('"', ""),
+            "date-back": request.form['date-back'].replace('"', ""),
+            "takeoff-back": request.form['takeoff-back'].replace('"', ""),
+            "land-back": request.form['land-back'].replace('"', ""),
+            "flight-back": request.form['flight-back'].replace('"', ""),
+            "notes": request.form['notes'].replace('"', ""),
             "number": number,
             "uuid": my_uuid,
             "when": datetime.datetime.now()
@@ -459,17 +459,17 @@ def edit_travel():
 @app.route("/edit_travel_complete", methods=('GET', 'POST'))
 def edit_travel_complete():
     travel = {}
-    travel['travel_desc'] = request.form['travel-desc'].replace("'", "")
-    travel['date-out'] = request.form['date-out'].replace("'", "")
-    travel['takeoff-out'] = request.form['takeoff-out'].replace("'", "")
-    travel['land-out'] = request.form['land-out'].replace("'", "")
-    travel['flight-out'] = request.form['flight-out'].replace("'", "")
-    travel['date-back'] = request.form['date-back'].replace("'", "")
-    travel['takeoff-back'] = request.form['takeoff-back'].replace("'", "")
-    travel['land-back'] = request.form['land-back'].replace("'", "")
-    travel['flight-back'] = request.form['flight-back'].replace("'", "")
-    travel['notes'] = request.form['notes'].replace("'", "")
-    number = request.form['number'].replace("'", "")
+    travel['travel_desc'] = request.form['travel-desc'].replace('"', "")
+    travel['date-out'] = request.form['date-out'].replace('"', "")
+    travel['takeoff-out'] = request.form['takeoff-out'].replace('"', "")
+    travel['land-out'] = request.form['land-out'].replace('"', "")
+    travel['flight-out'] = request.form['flight-out'].replace('"', "")
+    travel['date-back'] = request.form['date-back'].replace('"', "")
+    travel['takeoff-back'] = request.form['takeoff-back'].replace('"', "")
+    travel['land-back'] = request.form['land-back'].replace('"', "")
+    travel['flight-back'] = request.form['flight-back'].replace('"', "")
+    travel['notes'] = request.form['notes'].replace('"', "")
+    number = request.form['number'].replace('"', "")
     number = int(number)
     myquery = { "number": number }
     newvalues = { "$set": travel }
@@ -535,7 +535,7 @@ def add_log():
         my_uuid = uuid.uuid4()
         my_uuid = str(my_uuid)
         entry = {
-            "log_info": request.form['log_info'].replace("'", ""),
+            "log_info": request.form['log_info'].replace('"', ""),
             "number": number,
             "uuid": my_uuid,
             "when": datetime.datetime.now()
@@ -604,8 +604,8 @@ def edit_log():
 
 @app.route("/edit_log_complete", methods=('GET', 'POST'))
 def edit_log_complete():
-        number = request.form['number'].replace("'", "")
-        log_info = request.form['log_info'].replace("'", "")
+        number = request.form['number'].replace('"', "")
+        log_info = request.form['log_info'].replace('"', "")
         number = int(number)
         myquery = { "number": number }
         newvalues = { "$set": { "log_info": log_info }}
@@ -661,8 +661,8 @@ def add_action():
         my_uuid = uuid.uuid4()
         my_uuid = str(my_uuid)
         entry = {
-            "action": request.form['action'].replace("'", ""),
-            "company": request.form['company'].replace("'", ""),
+            "action": request.form['action'].replace('"', ""),
+            "company": request.form['company'].replace('"', ""),
             "number": number,
             "uuid": my_uuid,
             "status": "open",
@@ -751,9 +751,9 @@ def edit_action():
 
 @app.route("/edit_action_complete", methods=('GET', 'POST'))
 def edit_action_complete():
-    action = request.form['action'].replace("'", "")
-    number = request.form['number'].replace("'", "")
-    status = request.form['status'].replace("'", "")
+    action = request.form['action'].replace('"', "")
+    number = request.form['number'].replace('"', "")
+    status = request.form['status'].replace('"', "")
     number = int(number)
     myquery = { "number": number }
     newvalues = { "$set": { "action": action, "status": status }}
@@ -808,7 +808,7 @@ def add_company():
             number = company[0]["number"] + 1
 
         entry = {
-            "name": request.form['company'].replace("'", ""),
+            "name": request.form['company'].replace('"', ""),
             "uuid": my_uuid,
             "number": number,
             "when": datetime.datetime.now()
@@ -882,10 +882,10 @@ def add_customer():
             number = customer[0]["number"] + 1
 
         entry = {
-            "company": request.form['company'].replace("'", ""),
-            "name": request.form['name'].replace("'", ""),
-            "phone": request.form['phone'].replace("'", ""),
-            "email": request.form['email'].replace("'", ""),
+            "company": request.form['company'].replace('"', ""),
+            "name": request.form['name'].replace('"', ""),
+            "phone": request.form['phone'].replace('"', ""),
+            "email": request.form['email'].replace('"', ""),
             "uuid": my_uuid,
             "number": number,
             "when": datetime.datetime.now()
@@ -975,10 +975,10 @@ def edit_customer():
 
 @app.route("/edit_customer_complete", methods=('GET', 'POST'))
 def edit_customer_complete():
-    name = request.form['name'].replace("'", "")
-    number = request.form['number'].replace("'", "")
-    phone = request.form['phone'].replace("'", "")
-    email = request.form['email'].replace("'", "")
+    name = request.form['name'].replace('"', "")
+    number = request.form['number'].replace('"', "")
+    phone = request.form['phone'].replace('"', "")
+    email = request.form['email'].replace('"', "")
     number = int(number)
     myquery = { "number": number }
     newvalues = { "$set": { "name": name, "phone": phone, "email": email }}
@@ -1029,33 +1029,43 @@ Load and Database Section
 #-------------------------------------------------------------------------------
 '''
 
-@app.route("/load_warn", methods=('GET', 'POST'))
-def load_warn():
-    return render_template('load_warn.html')
-
 @app.route("/load", methods=('GET', 'POST'))
 def load():
-    # open the file for reading
-    f = open("da5id_data.txt", "r")
-    while True:
-        # read a single line
-        line = f.readline()
-        line = line.rstrip()
-        if not line:
-            break
-        if line[0] == "@":
-            junk, dbname = line.split('-')
+    if request.method == 'POST':
+        backupfile = request.files['file']
+        filename = secure_filename(backupfile.filename)
+        f = open(filename, "r")
+        while True:
+            # read a single line
             line = f.readline()
             line = line.rstrip()
-        process = process_line(db,dbname,line)
-    # close the pointer to that file
-    f.close()
-    message = "database has been loaded"
-    return redirect(url_for('.home_again', message=message))
+            if not line:
+                break
+            if line[0] == "@":
+                junk, dbname = line.split('-')
+                line = f.readline()
+                line = line.rstrip()
+            process = process_line(db,dbname,line)
+        # close the pointer to that file
+        f.close()
+        message = 'File has been loaded in the MongoDb'
+        return redirect(url_for('.home_again', message=message))
+    # Return for HTTP GET
+    return render_template('load.html')
+
+@app.route("/wipe", methods=('GET', 'POST'))
+def wipe():
+    db.actions.drop()
+    db.logs.drop()
+    db.deals.drop()
+    db.company.drop()
+    db.customer.drop()
+    db.meetings.drop()
+    db.travel.drop()
 
 @app.route("/dump", methods=('GET', 'POST'))
 def dump():
-    # Get db records and dump them to a file
+    # Get db records and dump them to a file.
     actions = prep_actions(db)
     logs = prep_logs(db)
     deal = prep_deals(db)
@@ -1094,9 +1104,9 @@ def add_meeting():
         else:
             number = meeting[0]["number"] + 1
         entry = {
-            "company": request.form['company'].replace("'", ""),
-            "title": request.form['title'].replace("'", ""),
-            "notes": request.form['notes'].replace("'", ""),
+            "company": request.form['company'].replace('"', ""),
+            "title": request.form['title'].replace('"', ""),
+            "notes": request.form['notes'].replace('"', ""),
             "uuid": my_uuid,
             "number": number,
             "when": datetime.datetime.now()
@@ -1202,9 +1212,9 @@ def edit_meeting():
 
 @app.route("/edit_meeting_complete", methods=('GET', 'POST'))
 def edit_meeting_complete():
-    title = request.form['title'].replace("'", "")
-    number = request.form['number'].replace("'", "")
-    notes = request.form['notes'].replace("'", "")
+    title = request.form['title'].replace('"', "")
+    number = request.form['number'].replace('"', "")
+    notes = request.form['notes'].replace('"', "")
     number = int(number)
     myquery = { "number": number }
     newvalues = { "$set": { "notes": notes }}

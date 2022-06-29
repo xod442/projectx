@@ -1,12 +1,17 @@
 from bson.json_util import dumps
 from bson.json_util import loads
 import json
+from pathlib import Path
+
+data_folder = Path()
+
+file_to_open = data_folder / "da5id_data.txt"
 #Script to get all logs from database
 def prep_travel(db):
     header = '@-travel'
     cr = '\n'
     # Set filehandle
-    f = open("/da5id_data.txt", "a")
+    f = open(file_to_open, "a")
     f.write(header)
     f.write(cr)
     # Get deals

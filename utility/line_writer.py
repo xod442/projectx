@@ -3,7 +3,7 @@ import json
 import uuid
 import datetime
 
-def process_line(db,dbname, line):
+def process_line(db,dbname,line):
     line = json.loads(line)
     my_uuid = uuid.uuid4()
     my_uuid = str(my_uuid)
@@ -35,6 +35,9 @@ def process_line(db,dbname, line):
         entry = {
             "deal": line['deal'],
             "company": line['company'],
+            "customer": line['customer'],
+            "ope": line['ope'],
+            "price": line['price'],
             "status": line['status'],
             "thoughts": line['thoughts'],
             "partner": line['partner'],
@@ -80,5 +83,24 @@ def process_line(db,dbname, line):
             "when": datetime.datetime.now()
         }
         res = db.meetings.insert_one(entry)
+    if dbname == 'travel':
+        count = db.travel.count_documents({})
+        number = count + 1
+        entry = {
+            "travel-desc": line['travel-desc'],
+            "date-out": line['date-out'],
+            "takeoff-out": line['takeoff-out'],
+            "land-out": line['land-out'],
+            "flight-out": line['flight-out'],
+            "date-back": line['date-back'],
+            "takeoff-back": line['takeoff-back'],
+            "land-back": line['land-back'],
+            "flight-back": line['flight-back'],
+            "notes": line['notes'],
+            "uuid": my_uuid,
+            "number": number,
+            "when": datetime.datetime.now()
+        }
+        res = db.travel.insert_one(entry)
 
     return

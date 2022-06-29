@@ -21,37 +21,38 @@
                           <select class="selectpicker" name="status">
                             <option value="pursuit" selected>pursuit</option>
                             <option value="won">won</option>
+                            <option value="dev">dev</option>
                             <option value="closed">closed</option>
                           </select>
                           </div>
                           <div class="col-sm-4">
                               <div class="form-group">
                                 <label for="partner" style="color:white">Partner:</label>
-                                <input type="text" value="{{ partner }}" class="form-control" id="partner" name="partner">
+                                <input type="text" required value="{{ partner }}" class="form-control" id="partner" name="partner">
                               </div>
                           </div>
                           <div class="col-sm-4">
                               <div class="form-group">
                                 <label for="customer" style="color:white">Customer Name:</label>
-                                <input type="text" value="{{ customer }}" class="form-control" id="customer" name="customer">
+                                <input type="text" required value="{{ customer }}" class="form-control" id="customer" name="customer">
                                 </div>
                           </div>
                           <div class="col-sm-4">
                               <div class="form-group">
                                 <label for="ope" style="color:white">OPE#:</label>
-                                <input type="text" value="{{ ope }}" class="form-control" id="ope" name="ope">
+                                <input type="text" required value="{{ ope }}" class="form-control" id="ope" name="ope">
                                 </div>
                           </div>
                             <div class="col-sm-8">
                                 <div class="form-group">
                                   <label for="deal" style="color:white">Deal Description:</label>
-                                  <input type="text" value="{{ deal }}"class="form-control" id="deal" name="deal">
+                                  <input type="text" required value="{{ deal }}"class="form-control" id="deal" name="deal">
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                   <label for="price" style="color:white">Deal Size:</label>
-                                  <input type="text" value="{{ price }}"class="form-control" id="price" name="price">
+                                  <input type="text" required value="{{ price }}"class="form-control" placeholder="185000" id="price" name="price">
                                 </div>
                             </div>
 
@@ -59,13 +60,13 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                   <label for="thoughts" style="color:white">Thoughts:</label>
-                                  <input type="text" value="{{ thoughts }}"class="form-control" id="thoughts" name="thoughts">
+                                  <input type="text" required value="{{ thoughts }}"class="form-control" id="thoughts" name="thoughts">
                                 </div>
                             </div>
                             <div class="col-sm-12">
                               <div>
                                 <label for="notes" style="color:white">Notes:</label>
-                                <textarea id="notes" name="notes" rows="10" cols="100">{{ notes }}</textarea>
+                                <textarea id="notes" placeholder="Do Not Use Quotes" required name="notes" rows="10" cols="100">{{ notes }}</textarea>
                               </div>
                             </div>
 
