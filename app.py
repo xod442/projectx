@@ -1,3 +1,45 @@
+'''                               ,----,.
+                             ,'   ,' |
+    ,---,                  ,'   .'   |
+  .'  .' `\              ,----.'    .'  ,--,         ,---,
+,---.'     \             |    |   .'  ,--.'|       ,---.'|
+|   |  .`\  |            :    :  |--, |  |,        |   | :
+:   : |  '  |  ,--.--.   :    |  ;.' \`--'_        |   | |
+|   ' '  ;  : /       \  |    |      |,' ,'|     ,--.__| |
+'   | ;  .  |.--.  .-. | `----'.'\   ;'  | |    /   ,'   |
+|   | :  |  ' \__\/: . .   __  \  .  ||  | :   .   '  /  |
+'   : | /  ;  ," .--.; | /   /\/  /  :'  : |__ '   ; |:  |
+|   | '` ,/  /  /  ,.  |/ ,,/  ',-   .|  | '.'||   | '/  '
+;   :  .'   ;  :   .'   \ ''\       ; ;  :    ;|   :    :|
+|   ,.'     |  ,     .-./\   \    .'  |  ,   /  \   \  /
+'---'        `--`---'     `--`-,-'     ---`-'    `----'
+
+
+
+2022 wookieware.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0.
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+
+__author__ = "@netwookie"
+__credits__ = ["Rick Kauffman"]
+__license__ = "Apache2"
+__version__ = "0.1.1"
+__maintainer__ = "Rick Kauffman"
+__email__ = "rick@rickkauffman.com"
+__status__ = "Alpha"
+
+'''
 from flask import Flask, request, render_template, abort, redirect, url_for
 import pymongo
 import datetime
@@ -14,6 +56,7 @@ from utility.customer_dump_prep import prep_customer
 from utility.meetings_dump_prep import prep_meeting
 from utility.travel_dump_prep import prep_travel
 from utility.line_writer import process_line
+from werkzeug.utils import secure_filename
 import uuid
 #
 app = Flask(__name__)
@@ -1053,6 +1096,12 @@ def load():
     # Return for HTTP GET
     return render_template('load.html')
 
+
+@app.route("/wipe_warn", methods=('GET', 'POST'))
+def wipe_warn():
+    return render_template('wipe_warn.html')
+
+
 @app.route("/wipe", methods=('GET', 'POST'))
 def wipe():
     db.actions.drop()
@@ -1062,6 +1111,8 @@ def wipe():
     db.customer.drop()
     db.meetings.drop()
     db.travel.drop()
+    message = "database has been deleted"
+    return redirect(url_for('.home_again', message=message))
 
 @app.route("/dump", methods=('GET', 'POST'))
 def dump():
