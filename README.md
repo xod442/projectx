@@ -16,20 +16,21 @@ Works well with docker-desktop for macbook
 
 ```
 % git clone https://github.com/xod442/projectx.git
+% chmod 766 projectx
 % cd projectx
 projectx%  docker-compose up -d
 ```
 
-# Create user credentials
-The first time you login, da5id will present a credential page.
-Enter your username, and password twice. It will be saved to system.
-
-These will be you access credentials. This is not a multiuser system...yet.
-You cannot change your credentials unless you access the mongo db collection
-directly. :-)
-
 # Open browser
 Use: localhost:5001
+
+
+# Create user credentials
+The first time you login, da5id will present a credential page.
+Enter your username, and password. da5id will redirect to a page to enter your credentials. It will be saved to system.
+
+These will be your access credentials. This is not a multiuser system...yet.
+If you want to change your password, call me :-)
 
 # Inside the app, create companies.
 Just add a list of anything here, I use companies I work with.
